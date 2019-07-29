@@ -1,6 +1,9 @@
 // Select text input
 const textInput = document.getElementById('city');
 
+// selecting the div for errorMessage
+const errorMessage = document.querySelector('.errorMessage')
+
 let cityName = textInput.value; // store the value of the input 
 
 // When an input event is triggered, update cityName
@@ -33,12 +36,14 @@ form.addEventListener('submit', (e) => {
                 city.innerHTML = 'City: ' + response.data.city;
                 celsius.innerHTML = 'Temperature (C): ' + response.data['temperature (C)'];
                 fahrenheit.innerHTML = 'Temperature (F): ' + response.data['temperature (F)'];
-            } else {
+            } 
+            else {
                 errorMessage.innerHTML = 'City does not exit in our database';
             }
         })
         .catch((error) => {
             console.log(error);
+            // errorMessage.innerHTML = 'City does not exit in our database';            
         })
 
     // clear input
